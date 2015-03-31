@@ -1,0 +1,94 @@
+{namespace Hw5.soy}
+
+/**
+ * This is a Closure Template.
+ *
+ * To regenerate just English, run:
+ *   make pinball-en
+ *
+ * To regenerate all languages, run:
+ *   make languages
+ */
+
+/**
+ * Translated messages for use in JavaScript.
+ */
+{template .messages}
+  <div style="display: none">
+     Hw5 is homework5   
+  </div>
+{/template}
+
+
+
+/**
+ * Web page structure.
+ */
+{template .start}
+  {call .messages /}
+  <table id="header" width="100%">
+    <tr>
+      <td valign="bottom">
+        <h1>
+          {call BlocklyGames.soy.titleSpan}
+            {param appName}
+              {msg meaning="Games.pinball" desc="IBID"}Move&Hit{/msg}
+            {/param}
+          {/call}
+        </h1>
+      </td>
+      <td class="farSide">
+        <select id="languageMenu"></select>
+        &nbsp;
+        
+      </td>
+    </tr>
+  </table>
+
+  {call .toolbox /}
+  <div id="blockly"></div>
+
+  {call BlocklyGames.soy.dialog /}
+  <div id="help" class="dialogHiddenContent">
+    <div style="padding-bottom: 0.7ex">
+      {msg meaning="Pinball.helpText"
+           desc="Instructions for the pinball."}
+        If you like pinball, please support us in our facebook fan page. 
+      {/msg}
+    </div>
+    <iframe style="height: 400px; width: 100%; border: none;" src="pinball/pinball_blockly.html?lang={$ij.lang}"></iframe> 
+    {call BlocklyGames.soy.ok /}
+  </div>
+  <div id="executeProgram" class="dialogHiddenContent">
+    <div id="execute">
+    </div>
+    <div id="graph"><div id="graphValue"></div></div>
+    {call BlocklyGames.soy.ok /}
+  </div>
+{/template}
+
+
+/**
+ * Toolboxes for each level.
+ */
+{template .toolbox}
+<xml id="toolbox" style="display: none">
+  <category name="Object">
+    <block type="set_object"></block>
+  </category>
+  <category name="Motion">
+    <block type="move"></block>
+    <block type="hit"></block>
+    <block type="repeat"></block>
+  </category>
+</xml>
+{/template}
+
+
+/**
+ * Readonly Blockly in an iframe.
+ */
+{template .readonly}
+  {call .messages /}
+  <div id="blockly"></div>
+{/template}

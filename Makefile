@@ -23,6 +23,10 @@ index-en:
 	$(SOY_COMPILER) --outputPathFormat appengine/index/generated/en/soy.js --srcs appengine/index/template.soy
 	python build-app.py index en
 
+hw5-en: common-en
+	$(SOY_COMPILER) --outputPathFormat appengine/hw5/generated/en/soy.js --srcs appengine/hw5/template.soy
+	python build-app.py hw5 en
+
 puzzle-en: common-en
 	$(SOY_COMPILER) --outputPathFormat appengine/puzzle/generated/en/soy.js --srcs appengine/puzzle/template.soy
 	python build-app.py puzzle en
